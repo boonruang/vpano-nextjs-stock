@@ -13,7 +13,24 @@ export default function Layout({ children }: Props) {
       <Header />
       <Menu />
       {children}
-      <Footer />
+      <Footer
+        style={{
+          position: 'fixed',
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          backgroundColor: '#eba8a8',
+          color: 'black',
+          fontSize: 13,
+          textAlign: 'left',
+          height: 30,
+          paddingLeft: 8,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          fontWeight: 900,
+        }}
+      />
       <style jsx global>
         {`
           body {

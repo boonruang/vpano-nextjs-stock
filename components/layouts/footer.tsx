@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { StyleHTMLAttributes } from 'react'
 
-type Props = {}
+type Props = {
+  style?: React.CSSProperties
+}
 
-export default function Footer({}: Props) {
+export default function Footer({ style }: Props) {
   return (
-    <div>
-      <h1>Footer</h1>
+    <div style={style}>
+      {/* alt 0169 */}
+      <span>
+        Copyright © 2020 CodeMobiles Co., Ltd. All Rights Reserved. reserved.
+      </span>
     </div>
   )
 }
