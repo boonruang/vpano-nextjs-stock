@@ -4,6 +4,7 @@ import Layout from '../components/layouts/layout'
 import Menu from '../components/layouts/menu'
 import MaterialTable from 'material-table'
 import { products } from './api/dummy'
+import { Typography } from '@material-ui/core'
 
 type Props = {}
 
@@ -11,7 +12,11 @@ export default function Stock({}: Props) {
   const columns = [
     {
       title: 'ID',
-      field: 'id',
+      render: (item) => (
+        <Typography variant="body1" color="primary">
+          {item.id}
+        </Typography>
+      ),
     },
     {
       title: 'IMAGE',
@@ -19,7 +24,11 @@ export default function Stock({}: Props) {
     },
     {
       title: 'NAME',
-      field: 'name',
+      render: (item) => (
+        <Typography variant="body1" color="primary">
+          {item.name}
+        </Typography>
+      ),
     },
     {
       title: 'PRICE',
