@@ -1,3 +1,5 @@
+import { Container, Toolbar } from '@material-ui/core'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import React, { Fragment, ReactNode } from 'react'
 import Footer from './footer'
 import Header from './header'
@@ -7,12 +9,37 @@ type Props = {
   children: ReactNode
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
+    content: {
+      flexGrow: 1,
+      padding: theme.spacing(3),
+    },
+  }),
+)
+
 export default function Layout({ children }: Props) {
+  const classes = useStyles()
   return (
     <Fragment>
       <Header />
       <Menu />
-      {children}
+      <main className={classes.content}>
+        <Toolbar />
+        <Container
+          style={{
+            backgroundColor: 'red',
+          }}
+        >
+          {children}
+        </Container>
+      </main>
       <Footer
         style={{
           position: 'fixed',
