@@ -3,7 +3,7 @@ export const products = [
     id: 34,
     name: 'Kan4',
     image: '34.jpg',
-    price: 11,
+    price: 11000,
     stock: 2222,
     createdAt: '2020-04-12T09:27:19.282Z',
     updatedAt: '2020-05-23T02:35:50.817Z',
