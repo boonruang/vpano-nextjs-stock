@@ -3,24 +3,41 @@ import Header from '../components/layouts/header'
 import Layout from '../components/layouts/layout'
 import Menu from '../components/layouts/menu'
 import MaterialTable from 'material-table'
+import { products } from './api/dummy'
 
 type Props = {}
 
 export default function Stock({}: Props) {
+  const columns = [
+    {
+      title: 'ID',
+      field: 'id',
+    },
+    {
+      title: 'IMAGE',
+      field: 'image',
+    },
+    {
+      title: 'NAME',
+      field: 'name',
+    },
+    {
+      title: 'PRICE',
+      field: 'price',
+    },
+    {
+      title: 'STOCK',
+      field: 'stock',
+    },
+    {
+      title: 'CREATED',
+      field: 'updatedAt',
+    },
+  ]
+
   return (
     <Layout>
-      <MaterialTable
-        columns={[
-          { title: 'No', field: 'no' },
-          { title: 'Name', field: 'name' },
-        ]}
-        data={[
-          { no: 1, name: 'Angular' },
-          { no: 2, name: 'ReactJS' },
-          { no: 3, name: 'VueJS' },
-        ]}
-        title="Course"
-      />
+      <MaterialTable columns={columns} data={products} title="Course" />
     </Layout>
   )
 }
