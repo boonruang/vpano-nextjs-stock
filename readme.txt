@@ -15,7 +15,7 @@ yarn add @material-ui/core
 yarn add @material-ui/icons
 
 git
-git add . && git commit -m "ep2" && git push
+git add . && git commit -m "EP17 login 3" && git push
 
 sourcecode on github
 github.com/codemobiles/cmnextstock/commits/master
