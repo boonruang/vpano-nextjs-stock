@@ -33,8 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const onClickLogin = () => {
+  Router.push('/stock')
+}
+
 export default function Login({}: Props) {
   const classes = useStyles()
+
   return (
     <Fragment>
       <div className={classes.container}>
@@ -74,6 +79,7 @@ export default function Login({}: Props) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                onClick={onClickLogin}
               >
                 Sign In
               </Button>
