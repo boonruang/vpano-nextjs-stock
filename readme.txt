@@ -26,3 +26,6 @@ https://github.com/boonruang/vpano-nextjs-stock/commits
 chrome extension
 github tree view
 octotree - Github code tree
+
+git reverse to last commit
+git reset --hard

@@ -1,6 +1,6 @@
 import { Container, Toolbar } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import React, { Fragment, ReactNode } from 'react'
+import React, { Fragment, ReactElement, ReactNode } from 'react'
 import Footer from './footer'
 import Header from './header'
 import Menu from './menu'
@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
+      paddingLeft: 240,
     },
   }),
 )
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: Props): ReactElement {
   const classes = useStyles()
   return (
     <Fragment>
@@ -46,7 +47,7 @@ export default function Layout({ children }: Props) {
           left: 0,
           bottom: 0,
           width: '100%',
-          backgroundColor: '#eba8a8',
+          backgroundColor: '#eeeeee',
           color: 'black',
           fontSize: 13,
           textAlign: 'left',
