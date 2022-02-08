@@ -22,7 +22,13 @@ export default function Stock({}: Props) {
     },
     {
       title: 'IMAGE',
-      field: 'image',
+      cellStyle: { padding: 5 },
+      render: (item) => (
+        <img
+          src="https://www.codemobiles.com/biz/images/cm_logo.svg?ref=10"
+          style={{ width: 50, height: 50, borderRadius: '5%' }}
+        />
+      ),
     },
     {
       title: 'NAME',
