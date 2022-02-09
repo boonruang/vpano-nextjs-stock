@@ -1,16 +1,16 @@
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import Layout from '../../../components/layouts/layout'
+import Layout from '../../components/layouts/layout'
 
 type Props = {
-  data: number
+  data: number[]
 }
 
 export default function StockEdit({ data }: Props) {
   return (
     <Layout>
       <h1>Edit</h1>
-      <span>{data}</span>
+      <span>{JSON.stringify(data)}</span>
     </Layout>
   )
 }
@@ -18,7 +18,7 @@ export default function StockEdit({ data }: Props) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
-      data: context.query.id,
+      data: [1, 2, 3, 4, 5, parseInt(context.query.id.toString())],
     },
   }
 }
