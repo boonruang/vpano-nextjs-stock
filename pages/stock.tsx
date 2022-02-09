@@ -2,11 +2,12 @@ import React from 'react'
 import Header from '../components/layouts/header'
 import Layout from '../components/layouts/layout'
 import Menu from '../components/layouts/menu'
-import MaterialTable from 'material-table'
+import MaterialTable, { Action } from 'material-table'
 import { products } from './api/dummy'
 import { Typography } from '@material-ui/core'
 import Moment from 'react-moment'
 import NumberFormat from 'react-number-format'
+import { Edit, DeleteOutline } from '@material-ui/icons'
 
 type Props = {}
 
@@ -78,9 +79,33 @@ export default function Stock({}: Props) {
     },
   ]
 
+  const actions: Action<any>[] = [
+    {
+      icon: () => <Edit />,
+      iconProps: { color: 'primary' },
+      tooltip: 'Edit',
+      onClick: (event, rowData) => {
+        // Do save operation
+      },
+    },
+    {
+      icon: () => <DeleteOutline />,
+      iconProps: { color: 'action' },
+      tooltip: 'Delete',
+      onClick: (event, rowData) => {
+        // Do save operation
+      },
+    },
+  ]
+
   return (
     <Layout>
-      <MaterialTable columns={columns} data={products} title="Course" />
+      <MaterialTable
+        columns={columns}
+        data={products}
+        title="Course"
+        actions={actions}
+      />
     </Layout>
   )
 }
