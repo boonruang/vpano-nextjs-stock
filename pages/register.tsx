@@ -1,7 +1,4 @@
-import React, { Fragment } from 'react'
-
-import loginStyle from '../styles/login.style'
-import loginCSS from '../public/static/css/login.module.css'
+import React, { Fragment, useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -33,8 +30,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+interface IAccount {
+  username: string
+  password: string
+}
+
 export default function Register({}: Props) {
   const classes = useStyles()
+  const [account, setAccount] = useState<IAccount>({
+    username: '',
+    password: '',
+  })
 
   return (
     <Fragment>
@@ -52,6 +58,10 @@ export default function Register({}: Props) {
                 margin="normal"
                 required
                 fullWidth
+                value={account.username}
+                onChange={(e) => {
+                  setAccount({ ...account, username: e.target.value })
+                }}
                 id="username"
                 label="Username"
                 autoComplete="email"
@@ -62,6 +72,10 @@ export default function Register({}: Props) {
                 margin="normal"
                 required
                 fullWidth
+                value={account.password}
+                onChange={(e) => {
+                  setAccount({ ...account, password: e.target.value })
+                }}
                 name="password"
                 label="Password"
                 type="password"
@@ -75,6 +89,9 @@ export default function Register({}: Props) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                onClick={() => {
+                  alert(JSON.stringify(account))
+                }}
               >
                 Register
               </Button>
