@@ -82,17 +82,19 @@ export default function Stock({}: Props) {
       tooltip: 'Edit',
       onClick: (event, rowData) => {
         // Router.push(`/stock/edit?id=${rowData.id}`)
-        Router.push({
-          pathname: '/stock/edit',
-          query: { id: rowData.id },
-        })
+        // Router.push({
+        //   pathname: '/stock/edit',
+        //   query: { id: rowData.id },
+        // })
+
+        Router.push('/stock/[action]/[id]', '/stock/action1/10')
       },
     },
     {
       icon: () => <DeleteOutline color="secondary" />,
       tooltip: 'Delete',
       onClick: (event, rowData) => {
-        // Do save operation
+        Router.push('/stock/[action]/[id]', '/stock/action2/10')
       },
     },
   ]
