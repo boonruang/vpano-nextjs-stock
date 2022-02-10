@@ -102,7 +102,7 @@ export default function Stock({}: Props) {
   const loadData = async () => {
     const result = await axios.get('/api/products')
 
-    alert(JSON.stringify(result.data))
+    // alert(JSON.stringify(result.data))
     setData(result.data)
   }
 
