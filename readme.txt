@@ -15,7 +15,7 @@ yarn add @material-ui/core
 yarn add @material-ui/icons
 
 git
-git add . && git commit -m "EP17 login 3" && git push
+git add . && git commit -m "Ep49 Backend and API Intro Axios" && git push
 
 sourcecode on github
 github.com/codemobiles/cmnextstock/commits/master
@@ -40,11 +40,16 @@ yarn add moment
 yarn add formik-material-ui
 yarn add formik
 
-npm install @material-ui/lab --save
+yarn add @material-ui/lab 
 
 formik
 https://stackworx.github.io/formik-mui/docs/guide/getting-started
 
 
 yarn add axios
+
+Fix Formik 
+yarn add formik formik-mui @mui/material @emotion/react @emotion/styled
+yarn add @mui/lab formik-mui-lab
+yarn add @material-ui/lab 
 
