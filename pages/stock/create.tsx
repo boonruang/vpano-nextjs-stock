@@ -10,7 +10,6 @@ import NumberFormat from 'react-number-format'
 import { Edit, DeleteOutline } from '@material-ui/icons'
 import { Formik, Form, Field, validateYupSchema } from 'formik'
 import { TextField } from 'formik-material-ui'
-import Container from '@material-ui/core/Container'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -80,7 +79,7 @@ export default function StockCreate({}: Props): ReactElement {
 
             <div className={classes.field}>
               <img
-                src="https://www.codemobiles.com/biz/images/cm_logo.svg?ref=10"
+                src="/static/img/ic_photo.png"
                 style={{ width: 25, height: 20 }}
               />
 
@@ -143,7 +142,7 @@ export default function StockCreate({}: Props): ReactElement {
           formData.append('price', values.price)
           formData.append('stock', values.stock)
           formData.append('image', values.file)
-          alert(JSON.stringify(values))
+          // alert(JSON.stringify(values))
           setSubmitting(false)
         }}
       >
