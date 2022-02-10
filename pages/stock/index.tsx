@@ -81,7 +81,11 @@ export default function Stock({}: Props) {
       icon: () => <Edit color="secondary" />,
       tooltip: 'Edit',
       onClick: (event, rowData) => {
-        // Do save operation
+        // Router.push(`/stock/edit?id=${rowData.id}`)
+        Router.push({
+          pathname: '/stock/edit',
+          query: { id: rowData.id },
+        })
       },
     },
     {

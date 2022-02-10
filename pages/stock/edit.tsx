@@ -15,6 +15,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import { GetServerSideProps } from 'next'
+import Router from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -138,7 +139,13 @@ export default function StockEdit({
             >
               Edit
             </Button>
-            <Button>Cancel</Button>
+            <Button
+              onClick={() => {
+                Router.back()
+              }}
+            >
+              Cancel
+            </Button>
           </CardActions>
         </Card>
       </Form>
