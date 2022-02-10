@@ -8,6 +8,7 @@ import { Button, Chip, Typography } from '@material-ui/core'
 import Moment from 'react-moment'
 import NumberFormat from 'react-number-format'
 import { Edit, DeleteOutline } from '@material-ui/icons'
+import Router from 'next/router'
 
 type Props = {}
 
@@ -22,7 +23,7 @@ export default function Stock({}: Props) {
       cellStyle: { padding: 5 },
       render: (item) => (
         <img
-          src="https://www.codemobiles.com/biz/images/cm_logo.svg?ref=10"
+          src="/static/img/favicon.png"
           style={{ width: 50, height: 50, borderRadius: '5%' }}
         />
       ),
@@ -104,7 +105,14 @@ export default function Stock({}: Props) {
             <div>
               <MTableToolbar {...props} />
               <div style={{ padding: '0px 10px' }}>
-                <Button fullWidth variant="contained" color="primary">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    Router.push('/stock/create')
+                  }}
+                >
                   Create
                 </Button>
               </div>
