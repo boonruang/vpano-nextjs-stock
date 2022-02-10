@@ -100,7 +100,8 @@ export default function Stock({}: Props) {
   const [data, setData] = React.useState([])
 
   const loadData = async () => {
-    const result = await axios.get('/api/products')
+    // const result = await axios.get('/api/products')
+    const result = await axios.get('http://localhost:8085/api/v2/stock/product')
 
     // alert(JSON.stringify(result.data))
     setData(result.data)
