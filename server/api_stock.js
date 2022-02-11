@@ -10,15 +10,20 @@ const Op = Sequelize.Op
 
 // Upload Image
 uploadImage = async (files, doc) => {
+  console.log('files : ', JSON.stringify(files))
   if (files.image != null) {
-    var fileExtention = files.image.name.split('.')[1]
+    // var fileExtention = files.image.name.split('.')[1]
+    var fileExtention = files.image.originalFilename.split('.')[1]
+
     doc.image = `${doc.id}.${fileExtention}`
     var newpath =
-      path.resolve(__dirname + '/uploaded/images/') + '/' + doc.image
-    if (fs.exists(newpath)) {
+      path.resolve(__dirname + '/uploaded/images/') + '\\' + doc.image
+
+    if (fs.existsSync(newpath)) {
       await fs.remove(newpath)
     }
-    await fs.moveSync(files.image.path, newpath)
+    console.log('fs.existsSync(newpath) :', fs.existsSync(newpath))
+    await fs.moveSync(files.image.filepath, newpath)
 
     // Update database
     let result = product.update({ image: doc.image }, { where: { id: doc.id } })
@@ -38,7 +43,10 @@ router.post('/product', async (req, res) => {
     const form = new formidable.IncomingForm()
     form.parse(req, async (error, fields, files) => {
       let result = await product.create(fields)
+      console.log('fields : ', fields)
+      console.log('files in products : ', JSON.stringify(files))
       result = await uploadImage(files, result)
+      console.log('Error : ', error)
       res.json({
         result: constants.kResultOk,
         message: JSON.stringify(result),
