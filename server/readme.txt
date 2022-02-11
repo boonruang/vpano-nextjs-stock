@@ -5,3 +5,5 @@ node server
 npx nodemon server.js
 
 yarn add cors
+yarn add sequelize 
+yarn add sqlite3
