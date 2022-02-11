@@ -1,11 +1,12 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize')
 const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "./database.sqlite"
-});
+  dialect: 'sqlite',
+  storage: './database.sqlite',
+  logging: true,
+})
 
-(async () => {
-    await sequelize.authenticate();
-})();
+;(async () => {
+  await sequelize.authenticate()
+})()
 
-module.exports = sequelize;
+module.exports = sequelize
