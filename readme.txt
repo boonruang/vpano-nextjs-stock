@@ -1,3 +1,7 @@
+create next project
+npx create-next-app 
+enter -> cmnextstock
+
 create tsconfig.json
 npm install --save-dev @types/react @types/node
 or yarn
@@ -53,3 +57,8 @@ yarn add formik formik-mui @mui/material @emotion/react @emotion/styled
 yarn add @mui/lab formik-mui-lab
 yarn add @material-ui/lab 
 
+สอน NextJS + Redux + Typescript
+https://www.youtube.com/watch?v=iveqR0yvfYc&list=PLjPfp4Ph3gBrqSqVxAAx5kvx3eBLiZLP8
+
+install redux for nextJS
+yarn add redux react-redux redux-thunk redux-saga next-redux-wrapper redux-devtools-extension

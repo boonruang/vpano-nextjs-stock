@@ -22,7 +22,7 @@ uploadImage = async (files, doc) => {
     if (fs.existsSync(newpath)) {
       await fs.remove(newpath)
     }
-    console.log('fs.existsSync(newpath) :', fs.existsSync(newpath))
+
     await fs.moveSync(files.image.filepath, newpath)
 
     // Update database
