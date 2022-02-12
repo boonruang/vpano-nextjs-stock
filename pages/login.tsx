@@ -12,6 +12,8 @@ import { Formik, Form, Field } from 'formik'
 import { TextField } from 'formik-material-ui'
 
 import Router from 'next/router'
+import { useSelector } from 'react-redux'
+import { spawn } from 'child_process'
 
 type Props = {}
 
@@ -40,6 +42,8 @@ const onClickLogin = () => {
 
 export default function Login({}: Props) {
   const classes = useStyles()
+
+  const authReducer = useSelector(({ authReducer }) => authReducer)
 
   const showForm = (props) => {
     return (
@@ -87,6 +91,8 @@ export default function Login({}: Props) {
         >
           Register
         </Button>
+        {/* <span>{authReducer.token ? authReducer.token : ''}</span> */}
+        {authReducer.token && <span>{authReducer.token}</span>}
       </Form>
     )
   }
