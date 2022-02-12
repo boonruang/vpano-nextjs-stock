@@ -2,6 +2,7 @@ import React from 'react'
 import App from 'next/app'
 import type { AppProps /*, AppContext */ } from 'next/app'
 import Head from 'next/head'
+import { wrapper } from '../redux'
 
 type Props = {}
 
@@ -17,4 +18,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
