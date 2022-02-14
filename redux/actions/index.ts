@@ -1,5 +1,7 @@
-import authAction from "./auth.action";
+import login from './login.action'
+import register from './register.action'
 
 export default {
-    ...authAction
+  ...login,
+  ...register,
 }
