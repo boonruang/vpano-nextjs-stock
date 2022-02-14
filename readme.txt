@@ -62,3 +62,11 @@ https://www.youtube.com/watch?v=iveqR0yvfYc&list=PLjPfp4Ph3gBrqSqVxAAx5kvx3eBLiZ
 
 install redux for nextJS
 yarn add redux react-redux redux-thunk redux-saga next-redux-wrapper redux-devtools-extension
+
+introducing to redux saga
+สอน ReactJS + ReduxSaga Step-by-Step (youtube)
+https://www.youtube.com/watch?v=6WBUWH1W2ug&list=PLjPfp4Ph3gBorKP2jk0x7zh34IL962S1D
+
+recap
+package need to install
+yarn add axios redux-saga
