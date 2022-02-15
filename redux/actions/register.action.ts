@@ -15,7 +15,7 @@ export const registerSuccess = (payload) => ({
 })
 
 export const registerFailed = () => ({
-  type: actionTypes.REGISTER_FETCHING,
+  type: actionTypes.REGISTER_FAILED,
 })
 
 export default {
