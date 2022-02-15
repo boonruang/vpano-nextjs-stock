@@ -10,10 +10,12 @@ import NumberFormat from 'react-number-format'
 import { Edit, DeleteOutline } from '@material-ui/icons'
 import Router from 'next/router'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
 
 type Props = {}
 
 export default function Stock({}: Props) {
+  const loginReducer = useSelector(({ loginReducer }: any) => loginReducer)
   const columns = [
     {
       title: 'ID',
@@ -121,6 +123,7 @@ export default function Stock({}: Props) {
         components={{
           Toolbar: (props) => (
             <div>
+              <span>token: {loginReducer.token}</span>
               <MTableToolbar {...props} />
               <div style={{ padding: '0px 10px' }}>
                 <Button
