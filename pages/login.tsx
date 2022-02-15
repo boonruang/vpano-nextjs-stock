@@ -12,7 +12,8 @@ import { Formik, Form, Field } from 'formik'
 import { TextField } from 'formik-material-ui'
 
 import Router from 'next/router'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import actions from '../redux/actions'
 
 type Props = {}
 
@@ -35,14 +36,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const onClickLogin = () => {
-  Router.push('/stock')
-}
-
 export default function Login({}: Props): ReactElement {
   const classes = useStyles()
 
-  const showForm = (props) => {
+  const dispatch = useDispatch()
+
+  const showForm = ({ values, setFieldValue, isValid, dirty }) => {
     return (
       <Form>
         <Field
@@ -69,12 +68,12 @@ export default function Login({}: Props): ReactElement {
         />
 
         <Button
-          type="submit"
+          type="button"
           fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
-          onClick={onClickLogin}
+          onClick={() => dispatch(actions.login(values))}
         >
           Sign In
         </Button>

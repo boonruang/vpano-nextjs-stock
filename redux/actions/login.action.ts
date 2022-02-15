@@ -15,7 +15,7 @@ export const loginSuccess = (payload) => ({
 })
 
 export const loginFailed = () => ({
-  type: actionTypes.LOGIN_FETCHING,
+  type: actionTypes.LOGIN_FAILED,
 })
 
 export default {
