@@ -20,7 +20,6 @@ export default (state = initialState, { type, payload }): LoginReducer => {
       return {
         ...state,
         result: null,
-        token: null,
         isFetching: true,
         isFailed: false,
       }
@@ -28,8 +27,6 @@ export default (state = initialState, { type, payload }): LoginReducer => {
       return {
         ...state,
         result: payload.result,
-        token: payload.token,
-        username: payload.username,
         isFetching: false,
         isFailed: false,
       }
@@ -37,7 +34,6 @@ export default (state = initialState, { type, payload }): LoginReducer => {
       return {
         ...state,
         result: null,
-        token: null,
         isFetching: false,
         isFailed: true,
       }
