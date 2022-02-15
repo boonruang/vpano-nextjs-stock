@@ -94,8 +94,7 @@ export default function Register({}: Props) {
                 color="primary"
                 className={classes.submit}
                 onClick={() => {
-                  alert(JSON.stringify(account))
-                  dispatch(actions.register({ ...account }, 'authen/register'))
+                  dispatch(actions.register(account))
                 }}
               >
                 Register

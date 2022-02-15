@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, ReactElement } from 'react'
 
 import loginStyle from '../styles/login.style'
 import loginCSS from '../public/static/css/login.module.css'
@@ -13,7 +13,6 @@ import { TextField } from 'formik-material-ui'
 
 import Router from 'next/router'
 import { useSelector } from 'react-redux'
-import { spawn } from 'child_process'
 
 type Props = {}
 
@@ -40,10 +39,10 @@ const onClickLogin = () => {
   Router.push('/stock')
 }
 
-export default function Login({}: Props) {
+export default function Login({}: Props): ReactElement {
   const classes = useStyles()
 
-  const authReducer = useSelector(({ authReducer }) => authReducer)
+  const authReducer = useSelector(({ authReducer }: any) => authReducer)
 
   const showForm = (props) => {
     return (
@@ -92,7 +91,7 @@ export default function Login({}: Props) {
           Register
         </Button>
         {/* <span>{authReducer.token ? authReducer.token : ''}</span> */}
-        {authReducer.token && <span>{authReducer.token}</span>}
+        {/* {authReducer.token && <span>{authReducer.token}</span>} */}
       </Form>
     )
   }
