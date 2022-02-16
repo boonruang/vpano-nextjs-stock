@@ -19,10 +19,12 @@ export default function Stock({}: Props) {
   const columns = [
     {
       title: 'ID',
+      field: 'id',
       render: (item) => <Typography variant="body1">{item.id}</Typography>,
     },
     {
       title: 'IMAGE',
+      field: 'name',
       cellStyle: { padding: 5 },
       render: (item) => (
         <img
@@ -113,6 +115,7 @@ export default function Stock({}: Props) {
         columns={columns}
         data={stockListReducer.result ? stockListReducer.result : []}
         title="Stock"
+        options={{ search: true }}
         actions={actions}
         components={{
           Toolbar: (props) => (
