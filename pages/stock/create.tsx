@@ -15,6 +15,8 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Router from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import actions from '../../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
 type Props = {}
 
 export default function StockCreate({}: Props): ReactElement {
+  const dispatch = useDispatch()
+  const stockCreateReducer = useSelector(
+    ({ stockCreateReducer }: any) => stockCreateReducer,
+  )
+
   const classes = useStyles()
 
   const showPreviewImage = (values) => {
@@ -150,6 +157,7 @@ export default function StockCreate({}: Props): ReactElement {
           formData.append('stock', values.stock)
           formData.append('image', values.file)
           // alert(JSON.stringify(values))
+          dispatch(actions.createStock(formData))
           setSubmitting(false)
         }}
       >

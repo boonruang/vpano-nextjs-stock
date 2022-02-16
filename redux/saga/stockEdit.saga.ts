@@ -2,7 +2,7 @@ import { put, call } from 'redux-saga/effects'
 import actions from '../actions'
 import httpClient from '../../utils/httpClient'
 
-export function* sagaStockEdit(payload) {
+export function* sagaStockEdit({ payload }: any) {
   try {
     yield put(actions.stockEditFetching())
     const response = yield call(httpClient.get, '/stock/product')
