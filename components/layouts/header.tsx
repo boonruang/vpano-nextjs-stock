@@ -15,6 +15,8 @@ import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 import Router from 'next/router'
+import actions from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const drawerWidth = 240
 
@@ -47,6 +49,8 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 export default function Header() {
+  const dispatch = useDispatch()
+
   const classes = useStyles()
 
   return (
@@ -72,7 +76,7 @@ export default function Header() {
             aria-label="account of current user"
             aria-haspopup="true"
             onClick={() => {
-              Router.push('/login')
+              dispatch(actions.logout())
             }}
             color="inherit"
           >

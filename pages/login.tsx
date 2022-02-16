@@ -12,10 +12,12 @@ import { Formik, Form, Field } from 'formik'
 import { TextField } from 'formik-material-ui'
 
 import Router from 'next/router'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import actions from '../redux/actions'
 
-type Props = {}
+type Props = {
+  token?: string
+}
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -36,10 +38,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Login({}: Props): ReactElement {
+export default function Login({ token }: Props): ReactElement {
   const classes = useStyles()
 
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    console.log('token: ', token)
+    dispatch(actions.relogin({ token }))
+  }, [])
 
   const showForm = ({ values, setFieldValue, isValid, dirty }) => {
     return (

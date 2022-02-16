@@ -2,7 +2,7 @@ import { put, call, select, delay } from 'redux-saga/effects'
 import httpClient from '../../utils/httpClient'
 import actions from '../actions'
 import Router from 'next/router'
-import { setCookie, removeCookie, getCookie } from '../../utils/cookie.js'
+import { setCookie, removeCookie, getCookie } from '../../utils/cookie'
 
 export function* sagaLogin({ payload }: any) {
   try {
@@ -12,11 +12,10 @@ export function* sagaLogin({ payload }: any) {
 
     if (result == 'ok') {
       setCookie('token', response.data.token)
-      yield put(actions.loginSuccess({ result: 'ok' }))
+      yield put(actions.loginSuccess(response.data))
       Router.push('/stock')
     } else {
       yield put(actions.loginFailed())
-      Router.push('/login')
     }
   } catch (error) {
     yield put(actions.loginFailed())
@@ -27,7 +26,7 @@ export function* sagaReLogin({ payload }: any) {
   // คล้ายกับการใช้ useSelector
   const state = yield select()
   yield delay(10)
-  if (state.LoginReducer.token) {
+  if (state.loginReducer.token) {
     Router.push('/stock')
   } else if (payload.token) {
     yield put(actions.loginSuccess(payload))

@@ -123,7 +123,7 @@ export default function Stock({}: Props) {
         components={{
           Toolbar: (props) => (
             <div>
-              <span>token: {loginReducer.token}</span>
+              {/* <span>token: {loginReducer.token}</span> */}
               <MTableToolbar {...props} />
               <div style={{ padding: '0px 10px' }}>
                 <Button
