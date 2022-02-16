@@ -5,6 +5,7 @@ import { sagaLogin, sagaReLogin, sagaLogout } from './login.saga'
 import { sagaStockList } from './stockList.saga'
 import { sagaStockCreate } from './stockCreate.saga'
 import { sagaStockEdit } from './stockEdit.saga'
+import { sagaStockDelete } from './StockDelete.saga'
 
 // Register
 export function* watchRegisterRequest() {
@@ -26,7 +27,7 @@ export function* watchLogoutRequest() {
   yield takeEvery(actionTypes.LOGOUT_REQUEST, sagaLogout)
 }
 
-/// StockList
+// StockList
 function* watchStockListRequest() {
   yield takeEvery(actionTypes.STOCK_LIST_REQUEST, sagaStockList)
 }
@@ -41,6 +42,11 @@ function* watchStockEditRequest() {
   yield takeEvery(actionTypes.STOCK_EDIT_REQUEST, sagaStockEdit)
 }
 
+// StockDelete
+function* watchStockDeleteRequest() {
+  yield takeEvery(actionTypes.STOCK_DELETE_REQUEST, sagaStockDelete)
+}
+
 export default function* rootSaga() {
   yield all([
     watchRegisterRequest(),
@@ -50,5 +56,6 @@ export default function* rootSaga() {
     watchStockListRequest(),
     watchStockCreateRequest(),
     watchStockEditRequest(),
+    watchStockDeleteRequest(),
   ])
 }
