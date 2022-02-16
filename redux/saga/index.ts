@@ -1,6 +1,6 @@
-import { all, take, takeEvery } from 'redux-saga/effects'
-import { sagaRegister } from './register.saga'
+import { all, takeEvery } from 'redux-saga/effects'
 import * as actionTypes from './actionTypes'
+import { sagaRegister } from './register.saga'
 import { sagaLogin, sagaReLogin, sagaLogout } from './login.saga'
 
 // Register

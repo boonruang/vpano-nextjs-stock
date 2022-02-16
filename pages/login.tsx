@@ -14,6 +14,8 @@ import { TextField } from 'formik-material-ui'
 import Router from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import actions from '../redux/actions'
+import { NextPageContext } from 'next'
+import { getCookie } from '../utils/cookie'
 
 type Props = {
   token?: string
@@ -42,9 +44,9 @@ export default function Login({ token }: Props): ReactElement {
   const classes = useStyles()
 
   const dispatch = useDispatch()
+  const loginReducer = useSelector(({ loginReducer }: any) => loginReducer)
 
   React.useEffect(() => {
-    console.log('token: ', token)
     dispatch(actions.relogin({ token }))
   }, [])
 
@@ -134,4 +136,16 @@ export default function Login({ token }: Props): ReactElement {
       </div>
     </Fragment>
   )
+}
+
+// Called in server-side
+Login.getInitialProps = (context: NextPageContext) => {
+  let token
+  const isServer = !!context.req
+  if (isServer && context.req.headers.cookie) {
+    token = getCookie('token', context.req)
+  }
+
+  console.log('CMCookie : token ' + token)
+  return { token }
 }

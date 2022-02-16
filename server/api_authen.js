@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
       res.json({
         result: constants.kResultOk,
         token: '1234523423412312',
-        username: username,
+        username,
         message: JSON.stringify(result),
       })
     } else {
