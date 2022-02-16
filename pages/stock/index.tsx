@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/layouts/header'
 import Layout from '../../components/layouts/layout'
 import Menu from '../../components/layouts/menu'
@@ -23,8 +23,10 @@ type Props = {}
 
 export default function Stock({}: Props) {
   const [open, setOpen] = React.useState(false)
+  const [selectedItem, setSelectedItem] = useState(null)
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (item) => {
+    setSelectedItem(item)
     setOpen(true)
   }
 
@@ -111,10 +113,59 @@ export default function Stock({}: Props) {
       icon: () => <DeleteOutline color="secondary" />,
       tooltip: 'Delete',
       onClick: (event, rowData) => {
-        dispatch(stockActions.deleteStock(rowData.id))
+        handleClickOpen(rowData)
       },
     },
   ]
+
+  const showDeletionConfirmDlg = () => {
+    return selectedItem ? (
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Are you sure to delete this item Id : {selectedItem.id}?
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
+              <img
+                src={`${process.env.NEXT_PUBLIC_APP_IMAGE_API_URL}/${
+                  selectedItem.image
+                }?version=${Math.random().toString()}`}
+                style={{ width: 50, height: 50, borderRadius: '5%' }}
+              />
+              <span style={{ marginLeft: 20 }}>{selectedItem.name}</span>
+            </div>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button
+            onClick={() => {
+              dispatch(stockActions.deleteStock(selectedItem.id, dispatch))
+              handleClose()
+            }}
+            color="primary"
+            autoFocus
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
+    ) : null
+  }
 
   const stockListReducer = useSelector(
     ({ stockListReducer }: any) => stockListReducer,
@@ -154,34 +205,7 @@ export default function Stock({}: Props) {
           ),
         }}
       />
-
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
-      </Dialog>
+      {showDeletionConfirmDlg()}
     </Layout>
   )
 }
