@@ -14,8 +14,10 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPageContext } from 'next'
 import Router from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import actions from '../../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -183,13 +185,14 @@ export default function StockEdit({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (
+  context: NextPageContext,
+) => {
+  const result = await actions.doGetStockById(context.query.id)
+
   return {
     props: {
-      id: context.query.id,
-      name: '',
-      price: 100,
-      stock: 10,
+      ...result,
     },
   }
 }
