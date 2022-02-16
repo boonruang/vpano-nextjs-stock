@@ -5,7 +5,7 @@ import httpClient from '../../utils/httpClient'
 export function* sagaStockEdit({ payload }: any) {
   try {
     yield put(actions.stockEditFetching())
-    const response = yield call(httpClient.get, '/stock/product')
+    const response = yield call(httpClient.put, '/stock/product', payload)
     yield put(actions.stockEditSuccess(response.data))
   } catch (error) {
     yield put(actions.stockEditFailed())

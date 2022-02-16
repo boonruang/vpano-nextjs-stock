@@ -1,8 +1,9 @@
 import httpClient from '../../utils/httpClient'
 import * as actionTypes from '../saga/actionTypes'
 
-export const editStock = () => ({
+export const editStock = (payload) => ({
   type: actionTypes.STOCK_EDIT_REQUEST,
+  payload,
 })
 
 export const stockEditFetching = () => ({

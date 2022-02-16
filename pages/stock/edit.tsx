@@ -36,6 +36,7 @@ type Props = {
   name: string
   price: number
   stock: number
+  image: string
 }
 
 export default function StockEdit({
@@ -43,13 +44,24 @@ export default function StockEdit({
   name,
   price,
   stock,
+  image,
 }: Props): ReactElement {
   const classes = useStyles()
 
+  const dispatch = useDispatch()
+  const stockEditReducer = useSelector(
+    ({ stockEditReducer }: any) => stockEditReducer,
+  )
+
   const showPreviewImage = (values) => {
     if (values.file_obj) {
+      return <img src={values.file_obj} style={{ height: 100 }} />
+    } else if (values.image) {
       return (
-        <img src={values.file_obj} style={{ height: 100, marginTop: 16 }} />
+        <img
+          src={`${process.env.NEXT_PUBLIC_APP_IMAGE_API_URL}/${values.image}`}
+          style={{ height: 100, marginTop: 20 }}
+        />
       )
     }
   }
@@ -167,14 +179,19 @@ export default function StockEdit({
         }}
         // ทำให้รับค่าจากภายนอกได้
         enableReinitialize
-        initialValues={{ id, name, stock, price }}
+        initialValues={{ id, name, stock, price, image }}
         onSubmit={(values: any, { setSubmitting }) => {
           let formData = new FormData()
+          formData.append('id', values.id)
           formData.append('name', values.name)
           formData.append('price', values.price)
           formData.append('stock', values.stock)
-          formData.append('image', values.file)
-          // alert(JSON.stringify(values))
+
+          if (values.file) {
+            formData.append('image', values.file)
+          }
+          dispatch(actions.editStock(formData))
+
           setSubmitting(false)
         }}
       >
