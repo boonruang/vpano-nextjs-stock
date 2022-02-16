@@ -11,11 +11,11 @@ import { Edit, DeleteOutline } from '@material-ui/icons'
 import Router from 'next/router'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
+import stockActions from '../../redux/actions'
 
 type Props = {}
 
 export default function Stock({}: Props) {
-  const loginReducer = useSelector(({ loginReducer }: any) => loginReducer)
   const columns = [
     {
       title: 'ID',
@@ -26,7 +26,7 @@ export default function Stock({}: Props) {
       cellStyle: { padding: 5 },
       render: (item) => (
         <img
-          src="/static/img/favicon.png"
+          src={`${process.env.NEXT_PUBLIC_APP_IMAGE_API_URL}/${item.image}`}
           style={{ width: 50, height: 50, borderRadius: '5%' }}
         />
       ),
@@ -99,25 +99,20 @@ export default function Stock({}: Props) {
     },
   ]
 
-  const [data, setData] = React.useState([])
-
-  const loadData = async () => {
-    // const result = await axios.get('/api/products')
-    const result = await axios.get('http://localhost:8085/api/v2/stock/product')
-
-    // alert(JSON.stringify(result.data))
-    setData(result.data)
-  }
+  const stockListReducer = useSelector(
+    ({ stockListReducer }: any) => stockListReducer,
+  )
+  const dispatch = useDispatch()
 
   React.useEffect(() => {
-    loadData()
+    dispatch(stockActions.feedStockList())
   }, [])
 
   return (
     <Layout>
       <MaterialTable
         columns={columns}
-        data={data ? data : []}
+        data={stockListReducer.result ? stockListReducer.result : []}
         title="Stock"
         actions={actions}
         components={{
