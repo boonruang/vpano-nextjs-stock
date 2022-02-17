@@ -12,6 +12,7 @@ export function* sagaLogin({ payload }: any) {
 
     if (result == 'ok') {
       setCookie('token', response.data.token)
+      setCookie('username', response.data.username)
       yield put(actions.loginSuccess(response.data))
       Router.push('/stock')
     } else {
