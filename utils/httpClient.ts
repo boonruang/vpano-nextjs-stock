@@ -2,6 +2,7 @@ import axios from 'axios'
 import { kToken } from './constants'
 import { getCookie, removeCookie } from './cookie'
 import Router from 'next/router'
+import { useDispatch } from 'react-redux'
 
 const httpClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_APP_BASE_API_URL,
@@ -25,8 +26,8 @@ httpClient.interceptors.response.use(
       401 === error.response.status ||
       500 === error.response.status
     ) {
-      removeCookie(kToken)
-      Router.push('/login')
+      // removeCookie(kToken)
+      // Router.push('/login')
     } else {
       return Promise.reject(error)
     }
