@@ -60,7 +60,13 @@ export default function Register({}: Props) {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <form noValidate>
+            <form
+              noValidate
+              onSubmit={(event) => {
+                event.preventDefault()
+                dispatch(actions.register(account))
+              }}
+            >
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -92,14 +98,11 @@ export default function Register({}: Props) {
               />
 
               <Button
-                type="button"
+                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={() => {
-                  dispatch(actions.register(account))
-                }}
               >
                 Register
               </Button>

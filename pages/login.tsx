@@ -52,7 +52,12 @@ export default function Login({ token }: Props): ReactElement {
 
   const showForm = ({ values, setFieldValue, isValid, dirty }) => {
     return (
-      <Form>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault()
+          dispatch(actions.login(values))
+        }}
+      >
         <Field
           component={TextField}
           margin="normal"
@@ -77,12 +82,11 @@ export default function Login({ token }: Props): ReactElement {
         />
 
         <Button
-          type="button"
+          type="submit"
           fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
-          onClick={() => dispatch(actions.login(values))}
         >
           Sign In
         </Button>
