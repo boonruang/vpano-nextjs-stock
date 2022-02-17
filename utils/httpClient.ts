@@ -20,7 +20,11 @@ httpClient.interceptors.response.use(
     return response
   },
   function (error) {
-    if (403 === error.response.status || 401 === error.response.status) {
+    if (
+      403 === error.response.status ||
+      401 === error.response.status ||
+      500 === error.response.status
+    ) {
       removeCookie(kToken)
       Router.push('/login')
     } else {
