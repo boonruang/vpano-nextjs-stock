@@ -75,3 +75,6 @@ yarn add @material-ui/lab
 cookie
 @types/js-cookie
 js-cookie
+
+yarn add chart.js
+yarn add react-chartjs-2
