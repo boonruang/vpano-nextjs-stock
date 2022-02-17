@@ -11,3 +11,5 @@ yarn add sqlite3
 install DB Browser for sqlite (Client Software) & import db files
 install Postman (Client Software) & import files
 yarn add bcryptjs
+
+yarn add jsonwebtoken
