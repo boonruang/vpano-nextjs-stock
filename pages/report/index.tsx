@@ -31,11 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {}
 
-export default function StockCreate({}: Props): ReactElement {
-  const dispatch = useDispatch()
-  const stockCreateReducer = useSelector(
-    ({ stockCreateReducer }: any) => stockCreateReducer,
-  )
+export default function Report({}: Props): ReactElement {
   const classes = useStyles()
 
   return (
