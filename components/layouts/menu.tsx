@@ -14,6 +14,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import TimelineIcon from '@material-ui/icons/Timeline'
 import HomeWorkIcon from '@material-ui/icons/HomeWork'
+import { MenuType } from '../../types/menu.types'
+import Link from 'next/link'
 
 const drawerWidth = 240
 
@@ -61,12 +63,16 @@ export default function Menu() {
       <Toolbar />
       <div className={classes.drawerContainer}>
         <List>
-          <ListItem button key={'text'}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary={'Title'} />
-          </ListItem>
+          {menus.map(({ title, icon, path }, index) => {
+            return (
+              <Link href={path}>
+                <ListItem button key={title}>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText primary={title} />
+                </ListItem>
+              </Link>
+            )
+          })}
         </List>
       </div>
     </Drawer>
