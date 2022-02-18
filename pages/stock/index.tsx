@@ -103,14 +103,14 @@ export default function Stock({}: Props) {
 
   const actions: Action<any>[] = [
     {
-      icon: () => <Edit color="secondary" />,
+      icon: () => <Edit style={{ color: '#91979c' }} />,
       tooltip: 'Edit',
       onClick: (event, rowData) => {
         Router.push(`/stock/edit?id=${rowData.id}`)
       },
     },
     {
-      icon: () => <DeleteOutline color="secondary" />,
+      icon: () => <DeleteOutline style={{ color: '#e85f5f' }} />,
       tooltip: 'Delete',
       onClick: (event, rowData) => {
         handleClickOpen(rowData)
