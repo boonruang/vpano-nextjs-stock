@@ -61,12 +61,24 @@ export default function Header() {
         </Typography>
         <div className={classes.grow}></div>
         <div>
-          <IconButton aria-label="show 4 new mails" color="inherit">
+          <IconButton
+            aria-label="show 4 new mails"
+            onClick={() => {
+              Router.push('/report')
+            }}
+            color="inherit"
+          >
             <Badge badgeContent={4} color="secondary">
               <MailIcon />
             </Badge>
           </IconButton>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
+          <IconButton
+            aria-label="show 17 new notifications"
+            onClick={() => {
+              Router.push('/register')
+            }}
+            color="inherit"
+          >
             <Badge badgeContent={17} color="secondary">
               <NotificationsIcon />
             </Badge>

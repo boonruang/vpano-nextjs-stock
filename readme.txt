@@ -78,3 +78,5 @@ js-cookie
 
 yarn add chart.js
 yarn add react-chartjs-2
+
+Docs https://www.chartjs.org/
