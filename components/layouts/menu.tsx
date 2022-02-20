@@ -86,7 +86,7 @@ export default function Menu() {
           {menus.map(({ title, icon, path }, index) => {
             const rootPath = '/' + router.pathname.split('/')[1]
             return (
-              <Link href={path}>
+              <Link href={path} key={index}>
                 <ListItem
                   button
                   key={title}

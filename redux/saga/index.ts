@@ -5,7 +5,7 @@ import { sagaLogin, sagaReLogin, sagaLogout } from './login.saga'
 import { sagaStockList } from './stockList.saga'
 import { sagaStockCreate } from './stockCreate.saga'
 import { sagaStockEdit } from './stockEdit.saga'
-import { sagaStockDelete } from './StockDelete.saga'
+import { sagaStockDelete } from './stockDelete.saga'
 
 // Register
 export function* watchRegisterRequest() {
