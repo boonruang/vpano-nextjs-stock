@@ -80,4 +80,4 @@ yarn add chart.js
 yarn add react-chartjs-2
 
 Docs https://www.chartjs.org/
-try to check git commit
+try to check git commit authentication
