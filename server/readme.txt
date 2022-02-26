@@ -13,3 +13,5 @@ install Postman (Client Software) & import files
 yarn add bcryptjs
 
 yarn add jsonwebtoken
+
+remove body-parser and use express instead
